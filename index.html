@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Competition Hub</title>
+    <meta
+      name="description"
+      content="Portal informasi perlombaan kampus dengan admin untuk menambah lomba, poster, PDF, dan link pendaftaran."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand-wrap">
+          <div class="brand-mark">C</div>
+          <div>
+            <p class="brand-name">Campus Competition Hub</p>
+            <small>Informasi lomba kampus</small>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#events">Lomba</a>
+          <a href="#about">Tentang</a>
+          <a href="#admin-panel">Admin</a>
+        </nav>
+
+        <button id="admin-open-btn" class="btn btn-primary">Admin</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Akses cepat & terpercaya</span>
+            <h1>Cari lomba terbaik untuk berkembang di kampus dan di luar kampus.</h1>
+            <p>
+              Temukan lomba terbaru, pendaftaran yang aktif, serta informasi lengkap
+              mulai dari poster, panduan PDF, hingga link registrasi.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#events" class="btn btn-primary">Lihat lomba</a>
+              <button id="admin-quick-btn" class="btn btn-secondary">Kelola admin</button>
+            </div>
+
+            <ul class="hero-stats">
+              <li><strong id="stat-count">0</strong><span>Lomba aktif</span></li>
+              <li><strong id="stat-open">0</strong><span>Open registration</span></li>
+              <li><strong>24/7</strong><span>Info update</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-panel shadow-card">
+            <div class="panel-head">
+              <span class="badge badge-soft">Update hari ini</span>
+              <span class="dot"></span>
+            </div>
+            <div class="panel-feature">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+                alt="Mahasiswa berdiskusi"
+              />
+            </div>
+            <div class="panel-footer">
+              <div>
+                <p class="muted">Lomba terpopuler</p>
+                <h3>Hackathon Inovasi Digital</h3>
+              </div>
+              <span class="chip success">Buka</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="search-section">
+        <div class="container">
+          <div class="toolbar shadow-card">
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Cari lomba, organizer, atau kategori..."
+              />
+            </div>
+
+            <div class="filter-group">
+              <select id="category-filter">
+                <option value="all">Semua kategori</option>
+                <option value="Teknologi">Teknologi</option>
+                <option value="Sains">Sains</option>
+                <option value="Bisnis">Bisnis</option>
+                <option value="Kesenian">Kesenian</option>
+                <option value="Olahraga">Olahraga</option>
+                <option value="Sosial">Sosial</option>
+              </select>
+
+              <select id="status-filter">
+                <option value="all">Semua status</option>
+                <option value="Buka">Buka</option>
+                <option value="Segera">Segera</option>
+                <option value="Ditutup">Ditutup</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-section">
+        <div class="container">
+          <div id="competitions-grid" class="competitions-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="about" class="info-strip">
+        <div class="container info-wrap">
+          <div>
+            <p class="eyebrow">Kenapa pilih kami?</p>
+            <h2>Semua informasi lomba dalam satu tempat.</h2>
+          </div>
+          <div class="benefits">
+            <div class="benefit-item">
+              <strong>Poster & PDF</strong>
+              <span>Informasi lomba lengkap dan jelas</span>
+            </div>
+            <div class="benefit-item">
+              <strong>Link pendaftaran</strong>
+              <span>Langsung mudah diakses</span>
+            </div>
+            <div class="benefit-item">
+              <strong>Admin fleksibel</strong>
+              <span>Kelola data lomba dengan cepat</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-panel" class="admin-panel hidden">
+        <div class="container">
+          <div class="admin-header">
+            <div>
+              <p class="eyebrow">Area admin</p>
+              <h2>Tambah lomba baru</h2>
+            </div>
+            <button id="logout-btn" class="btn btn-secondary small">Logout</button>
+          </div>
+
+          <form id="admin-form" class="admin-form shadow-card">
+            <div class="form-grid">
+              <label>
+                <span>Judul lomba</span>
+                <input type="text" name="title" placeholder="Contoh: Business Case Competition 2026" required />
+              </label>
+
+              <label>
+                <span>Organizer</span>
+                <input type="text" name="organizer" placeholder="Nama kampus / organisasi" required />
+              </label>
+
+              <label>
+                <span>Kategori</span>
+                <select name="category" required>
+                  <option value="Teknologi">Teknologi</option>
+                  <option value="Sains">Sains</option>
+                  <option value="Bisnis">Bisnis</option>
+                  <option value="Kesenian">Kesenian</option>
+                  <option value="Olahraga">Olahraga</option>
+                  <option value="Sosial">Sosial</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Status</span>
+                <select name="status" required>
+                  <option value="Buka">Buka</option>
+                  <option value="Segera">Segera</option>
+                  <option value="Ditutup">Ditutup</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Tanggal lomba</span>
+                <input type="date" name="eventDate" required />
+              </label>
+
+              <label>
+                <span>Deadline pendaftaran</span>
+                <input type="date" name="deadlineDate" required />
+              </label>
+
+              <label>
+                <span>Lokasi</span>
+                <input type="text" name="location" placeholder="Online / Kampus / Bandung" required />
+              </label>
+
+              <label>
+                <span>Link pendaftaran</span>
+                <input type="url" name="registrationLink" placeholder="https://..." />
+              </label>
+
+              <label class="full-width">
+                <span>Deskripsi</span>
+                <textarea name="description" rows="4" placeholder="Tuliskan deskripsi lomba..." required></textarea>
+              </label>
+
+              <label>
+                <span>Poster (upload image)</span>
+                <input type="file" name="posterFile" accept="image/*" />
+              </label>
+
+              <label>
+                <span>Poster URL (opsional)</span>
+                <input type="url" name="posterLink" placeholder="https://example.com/poster.jpg" />
+              </label>
+
+              <label>
+                <span>PDF lomba (upload)</span>
+                <input type="file" name="pdfFile" accept="application/pdf" />
+              </label>
+
+              <label>
+                <span>PDF URL (opsional)</span>
+                <input type="url" name="pdfLink" placeholder="https://example.com/panduan.pdf" />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Simpan lomba</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="login-modal" class="modal hidden" aria-modal="true" role="dialog">
+      <div class="modal-card shadow-card">
+        <div class="modal-head">
+          <h3>Login Admin</h3>
+          <button id="close-modal-btn" class="close-btn" aria-label="Tutup">×</button>
+        </div>
+
+        <form id="admin-login-form">
+          <label>
+            <span>Password admin</span>
+            <input type="password" id="admin-password" placeholder="Masukkan password" required />
+          </label>
+          <button type="submit" class="btn btn-primary full-width">Masuk</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
